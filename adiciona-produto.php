@@ -3,20 +3,27 @@
     <?php 
     $nome = $_GET["nome"];
     $preco = $_GET["preco"];
+    $conexao = mysqli_connect('localhost','root','','loja');
     ?>
     
     <?php 
-    $query = "insert into produtos(nome,preco) values('{$nome}',{$preco})";
-    $conexao = mysqli_connect('localhost','root','','loja');
+    function insereProduto($conexao,$nome,$preco){
+        $query = "insert into produtos(nome,preco) values('{$nome}',{$preco})";
+        $resultadoQuery = mysqli_query($conexao,$query);
+        return $resultadoQuery;
+    }
+    
 
-    if(mysqli_query($conexao, $query)){ //mysqli é o novo pacote de gerencia dentro do php?>
+    if(insereProduto($conexao,$nome,$preco)){ //mysqli é o novo pacote de gerência de DB dentro do php?>
 
     <p class="alert-success">Produto <?php echo $nome; ?> com preço igual à <?php echo $preco;?> foi adicionado com sucessso! </p>
     
     <?php 
-    }else{?>
+    }else{
+        $msg = mysqli_error($conexao);    
+    ?>
     
-    <p class="alert-danger">O produto<? = $nome?> não foi adicionado</p>
+    <p class="alert-danger">O produto<? = $nome?> não foi adicionado <? $msg ?></p> 
 
     <?php 
     }

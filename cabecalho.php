@@ -8,6 +8,23 @@
 </head>
 
 <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="index.php" class="navbar-brand">Minha Loja</a>
+            </div>
+
+            <div>
+                <ul class="nav navbar-nav"></ul>
+                    <li><a href="produto-formulario.php">Adicionar Produto</a></li>
+                    <li><a href="sobre.php">Sobre</a></li>
+            </div>
+        
+        </div><!--Final do Container-->
+    
+    </div>
+
     <div class="container">
     
         <div class="principal">
