@@ -16,4 +16,10 @@
         $resultadoQuery = mysqli_query($conexao,$query);
         return $resultadoQuery;
     }
+
+    function removerProduto($conexao,$id){
+        $query = "delete from produtos where id= {$id}";
+        $resultadoQuery = mysqli_query($conexao,$query);
+        return $resultadoQuery;
+    }
 ?>
