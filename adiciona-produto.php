@@ -3,11 +3,12 @@
       include("banco-produto.php");
         
     //variaveis
-    $nome = $_GET["nome"];
-    $preco = $_GET["preco"];
+    $nome = $_POST["nome"];
+    $preco = $_POST["preco"];
+    $descricao = $_POST['descricao'];
     //variaveis
 
-    if(insereProduto($conexao,$nome,$preco)){ //mysqli é o novo pacote de gerência de DB dentro do php?>
+    if(insereProduto($conexao,$nome,$preco,$descricao)){ //mysqli é o novo pacote de gerência de DB dentro do php?>
 
     <p class="text-success">Produto <?php echo $nome; ?> com preço igual à <?php echo $preco;?> foi adicionado com sucessso! </p>
     

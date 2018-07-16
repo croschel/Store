@@ -2,21 +2,12 @@
         include("conecta.php");
         include("banco-produto.php");
 
-    $id = $_GET['id'];
-    $nome = $_GET["nome"];
-    $preco = $_GET["preco"];
+    $id = $_POST['id'];
     
-    if (removerProduto($conexao,$id)) {?>
-        <p class="alert-success">Produto <?php echo $nome; ?> foi removido com sucessso! </p>
-    <?php
-    }else{
-        $msg = mysqli_error($conexao);
-    ?> 
-    <p class="alert-danger">O produto<?= $nome?> não foi removido <? $msg ?></p> 
-
-    <?php
-    }    
-
-?>
+    removerProduto($conexao,$id);
+    
+    header("Location: listar-produtos.php?removido=true");
+    die();
+    ?>
 
 <?php include("rodape.php");?>
