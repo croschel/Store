@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 16-Jul-2018 às 21:02
+-- Generation Time: 17-Jul-2018 às 14:36
 -- Versão do servidor: 10.1.32-MariaDB
 -- PHP Version: 7.0.30
 
@@ -25,6 +25,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nome`) VALUES
+(1, 'mobilidade'),
+(2, 'guloseimas'),
+(3, 'eletrodomestico'),
+(4, 'papelaria'),
+(5, 'esporte');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `produtos`
 --
 
@@ -32,19 +54,28 @@ CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `preco` decimal(10,2) DEFAULT NULL,
-  `descricao` text
+  `descricao` text,
+  `categoria_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `nome`, `preco`, `descricao`) VALUES
-(9, 'geladeira', '550.00', 'Geladeira top de linha com acessÃ³rios de popa e proa e adicionais de turbina mega aquaticas de Ãºltima geraÃ§Ã£o');
+INSERT INTO `produtos` (`id`, `nome`, `preco`, `descricao`, `categoria_id`) VALUES
+(9, 'geladeira', '550.00', 'Geladeira top de linha com acessÃ³rios de popa e proa e adicionais de turbina mega aquaticas de Ãºltima geraÃ§Ã£o', 3),
+(10, 'carro', '15000.00', 'carro muito potente', NULL),
+(11, 'lapis', '2.00', 'lapis maluco', 4);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `produtos`
@@ -55,6 +86,12 @@ ALTER TABLE `produtos`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `produtos`
