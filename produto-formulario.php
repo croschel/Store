@@ -1,9 +1,12 @@
 <?php   include("cabecalho.php");
         include("conecta.php");
         include("banco-categoria.php");
-        
+        include("logica-usuario.php");
+
+        verificarUsuario();
         $categorias = listarCategorias($conexao);
-        ?>
+    
+    ?>
     
     <h1>Inserir Produto</h1>
     

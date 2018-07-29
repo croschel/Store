@@ -1,6 +1,10 @@
 <?php   include("cabecalho.php");
         include("conecta.php");
         include("banco-produto.php");
+        include("logica-usuario.php");
+
+        verificarUsuario();
+        falhaDeAcesso();
 ?>
     <table class="table table-striped table-bordered">
         <?php

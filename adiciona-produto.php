@@ -2,6 +2,9 @@
       include("conecta.php");
       include("banco-produto.php");
         
+    
+    vericarUsuario();
+
     //variaveis
     $nome = $_POST["nome"];
     $preco = $_POST["preco"];
