@@ -11,7 +11,11 @@
         <p class="alert-danger">Login ou Senha Inválida</p>
         <?php
         }
-
+        if(isset($_GET['logout']) && $_GET['logout']==true){
+            ?>
+            <p class="alert-success">Logout realizado com sucesso</p>
+            <?php
+        }
         falhaDeAcesso();
         ?>
         
@@ -20,7 +24,11 @@
         <?php
         if(usuarioEstaLogado()){
           ?>
-          <p class="text-success">Usuario logado com o email <?=usuarioLogado()?></p>
+          <ul>
+          
+          <p class="text-success">Usuario logado com o email <?=usuarioLogado()?><a href="logout.php"> Logout</a></p>
+          
+          </ul>
         <?php  
         }else{
         ?>
@@ -41,4 +49,4 @@
         }
     ?>
 
-  <?php include("rodape.php")?>
+  <?php include("rodape.php");?>

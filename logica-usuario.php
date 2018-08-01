@@ -1,7 +1,8 @@
 <?php
+session_start();//trabalhar com sessão
 
 function verificarUsuario(){
-    if(!isset($_COOKIE['usuario_logado'])){
+    if(!usuarioEstaLogado()){
         header("location: index.php?falhaDeSeguranca=true");
         die();
     }
@@ -9,7 +10,7 @@ function verificarUsuario(){
 
 function usuarioEstaLogado(){
     
-    return isset($_COOKIE['usuario_logado']);
+    return isset($_SESSION['usuario_logado']);
         
     }
 
@@ -23,10 +24,14 @@ function falhaDeAcesso(){
 }
 
 function usuarioLogado(){
-    return $_COOKIE['usuario_logado'];
+    return $_SESSION['usuario_logado'];
 }
 
 function logaUsuario($email){
-        setcookie("usuario_logado",$email,time() + 20);
+        $_SESSION["usuario_logado"] = $email;
+}
+
+function logout(){
+    session_destroy();
 }
 ?>
