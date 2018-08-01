@@ -9,11 +9,11 @@
     <table class="table table-striped table-bordered">
         <?php
 
-        if(array_key_exists("removido",$_GET) && $_GET["removido"]=="true"){?>
-
-        <p class="alert-success">Produto foi removido com sucessso! </p>
-
-<?php   }
+        if(isset($_SESSION['success'])){?>
+        <p class="alert-success"><?=$_SESSION['success']?></p>
+        <?php   
+        unset($_SESSION['success']);
+        }
 
         $produtos = listaProdutos($conexao);
         foreach($produtos as $produto):?>

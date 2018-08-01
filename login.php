@@ -6,11 +6,13 @@
 
    
    if($usuario == null){
-       header("location: index.php?logado=0");
+        $_SESSION["danger"] = "Usuário ou Senha Inválido";
+        header("location: index.php");
 
        }else{
           logaUsuario($usuario['email']);
-           header("location: index.php?logado=1");
+          $_SESSION["success"] = "Usuário Logado com sucesso";
+            header("location: index.php");
        }
        die();
 

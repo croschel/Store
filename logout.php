@@ -3,5 +3,6 @@
         include("logica-usuario.php");
 
         logout();
-        header("location: index.php?logout=true");
+        $_SESSION["success"] = "Logout realizado com sucesso";
+        header("location: index.php");
         die();
