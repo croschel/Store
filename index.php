@@ -1,27 +1,8 @@
         <?php include("cabecalho.php");
               include("logica-usuario.php");
 
-        if(isset($_SESSION['success'])){
-        ?>
-        <p class="alert-success"><?=$_SESSION["success"]?></p>
-        <?php
-        unset($_SESSION["success"]);
-        }
-
-        if(isset($_SESSION['danger'])){
-        ?>
-        <p class="alert-danger"><?=$_SESSION['danger']?></p>
-        <?php
-        unset($_SESSION["danger"]);
-        }
-
-        if(isset($_SESSION['success'])){
+            falhaDeAcesso();
             ?>
-            <p class="alert-success"><?=$_SESSION['success']?></p>
-            <?php
-        }
-        falhaDeAcesso();
-        ?>
         
 
   <h2>Login</h2>

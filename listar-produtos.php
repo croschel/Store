@@ -9,12 +9,6 @@
     <table class="table table-striped table-bordered">
         <?php
 
-        if(isset($_SESSION['success'])){?>
-        <p class="alert-success"><?=$_SESSION['success']?></p>
-        <?php   
-        unset($_SESSION['success']);
-        }
-
         $produtos = listaProdutos($conexao);
         foreach($produtos as $produto):?>
             <tr>
