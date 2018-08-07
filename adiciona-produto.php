@@ -3,7 +3,7 @@
       include("banco-produto.php");
         
     
-    vericarUsuario();
+
 
     //variaveis
     $nome = $_POST["nome"];
