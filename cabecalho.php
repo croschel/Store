@@ -1,4 +1,5 @@
 <?php include("mostra-alerta.php");
+        include("conecta.php");
 
     error_reporting(E_ALL ^ E_NOTICE);
 ?>

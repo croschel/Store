@@ -1,6 +1,6 @@
-<?php   include("conecta.php");
-        include("banco-usuario.php");
-        include("logica-usuario.php");
+<?php   require_once("conecta.php");
+        require_once("banco-usuario.php");
+        require_once("logica-usuario.php");
 
         logout();
         $_SESSION["success"] = "Logout realizado com sucesso";
