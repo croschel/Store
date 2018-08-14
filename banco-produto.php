@@ -16,15 +16,16 @@
         return mysqli_fetch_assoc($resultado);
     }
 
-    function insereProduto($conexao,$nome,$preco,$descricao,$categoria_id,$usado){
-        $nome = mysqli_escape_string($conexao,$nome);
-        $query = "insert into produtos(nome,preco,descricao,categoria_id,usado) values('{$nome}',{$preco},'{$descricao}',{$categoria_id}, {$usado})";
+    function insereProduto($conexao,$produto){
+        $nome = mysqli_escape_string($conexao,$produto->nome);
+        $query = "insert into produtos(nome,preco,descricao,categoria_id,usado) 
+                values('{$produto->nome}',{$produto->preco},'{$produto->descricao}',{$produto->categoria_id}, {$produto->usado})";
         $resultadoQuery = mysqli_query($conexao,$query);
         return $resultadoQuery;
     }
 
-    function alteraProduto($conexao,$id,$nome,$preco,$descricao,$categoria_id,$usado){
-        $query = "update produtos set nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}', categoria_id = {$categoria_id}, usado = {$usado} where id = {$id}";
+    function alteraProduto($conexao,$produto){
+        $query = "update produtos set nome = '{$produto->nome}', preco = {$produto->preco}, descricao = '{$produto->descricao}', categoria_id = {$produto->categoria_id}, usado = {$produto->usado} where id = {$produto->id}";
         $resultado = mysqli_query($conexao,$query);
         return $resultado;
     }
