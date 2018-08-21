@@ -6,3 +6,14 @@ body {
     padding: 40px 15px;
     text-align: center;
 }
+
+.tabela-dinamica{
+    border-spacing: 0.25rem;
+    border-collapse: separate;
+}
+
+.titulo-tabela{
+    background-color: gray;
+    color: black;
+    font-style: inherit;
+}

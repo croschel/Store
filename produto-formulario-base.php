@@ -1,21 +1,21 @@
 
  <tr>
  <td><label for="nome">Nome</label></td>
- <td><input type="text" name="nome" value="<?=$produto->nome?>" class="form-control"/></td>
+ <td><input type="text" name="nome" value="<?=$produto->getNome()?>" class="form-control"/></td>
  </tr>
 
  <tr>
  <td><label for="preco">Preço</label></td>
- <td><input type="number" name="preco" value="<?=$produto->preco?>" class="form-control"/></td>
+ <td><input type="number" name="preco" value="<?=$produto->getPreco()?>" class="form-control"/></td>
  </tr>
 
  <tr>
  <td><label for="descricao">Descrição</label></td>
- <td><textarea name="descricao" class="form-control"><?=$produto->descricao?></textarea></td>
+ <td><textarea name="descricao" class="form-control"><?=$produto->getDescricao()?></textarea></td>
  </tr>
 
     <?php
-    $usado = $produto->usado ? "checked='checked'" : "";
+    $usado = $produto->isUsado() ? "checked='checked'" : "";
     ?>
 
  <tr>
@@ -28,10 +28,10 @@
  <td>
  <select name="categoria_id" class="form-control">
      <?php foreach($categorias as $categoria) :
-     $essaEhCategoria = $produto->categoria->id == $categoria->id;
+     $essaEhCategoria = $produto->getCategoria()->getId() == $categoria->getId();
      $selecao = $essaEhCategoria ? "selected='selected'" : ""; 
      ?>
- <option value="<?=$categoria->id;?>" <?=$selecao?>> <?=$categoria->nome?></option>
+ <option value="<?=$categoria->getId();?>" <?=$selecao?>> <?=$categoria->getNome()?></option>
      <?php endforeach;?>
  </select>
  </td>

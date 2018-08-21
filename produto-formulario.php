@@ -18,15 +18,10 @@
                 <?php 
                 
                 $categoria = new Categoria();
-                $categoria->id = 1;
+                $categoria->setId(1);
     
-                $produto = new Produto();
-                $produto->nome = '';
-                $produto->preco = '';
-                $produto->descricao = ''; 
-                $produto->categoria = $categoria;               
-                $usado = null;
-
+                $produto = new Produto("","","",$categoria,null);
+                 
                 include("produto-formulario-base.php")?>
 
                     <tr>

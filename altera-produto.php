@@ -14,7 +14,6 @@
     $preco = $_POST["preco"];
     $descricao = $_POST['descricao'];
     
-    
     if(array_key_exists('usado',$_POST)){
         $usado = "true";
     }else{
@@ -24,6 +23,7 @@
 
     //Instância do Objeto produto
     $produto = new Produto($nome,$preco,$descricao,$categoria,$usado);
+    $produto->setId($_POST['id']);//sem o id este não pode ser modificado
 
     if(alteraProduto($conexao,$produto)){ //mysqli é o novo pacote de gerência de DB dentro do php?>
 

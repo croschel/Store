@@ -7,7 +7,7 @@
         $id = $_GET['id'];
         $produto = buscaProduto($conexao,$id);
         $categorias = listarCategorias($conexao);
-        $usado = $produto->usado ? "checked='checked'" : "";
+        $usado = $produto->isUsado() ? "checked='checked'" : "";
         ?>
     
     <h1>Alterando Produto</h1>
@@ -16,7 +16,7 @@
             <table class="table">
                 <tbody> 
 
-                    <input type="hidden" name="id" value="<?=$produto->id?>">
+                    <input type="hidden" name="id" value="<?=$produto->getId()?>">
 
                         <?php include("produto-formulario-base.php");?>
 
