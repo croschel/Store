@@ -1,5 +1,12 @@
-<?php include("mostra-alerta.php");
-        include("conecta.php");
+<?php require_once("mostra-alerta.php");
+    require_once("conecta.php");
+
+    function carregaClasse($nomeDaclasse){
+        require_once("class/".$nomeDaclasse.".php");
+    }
+
+    spl_autoload_register("carregaClasse");/*função especial do PHP que seta a função de carregar classe para subir classes automaticamente
+                                            lembrando que a classe deve ter o mesmo nome do arquivo*/
 
     error_reporting(E_ALL ^ E_NOTICE);
 ?>
@@ -38,3 +45,4 @@
         <div class="principal">
 
         <?php mostraAlerta('success'); mostraAlerta('danger');?>
+        
