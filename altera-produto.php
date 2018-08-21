@@ -4,36 +4,36 @@
       require_once("class/Categoria.php");
 
         
-    //Instância do Objeto produto
-    $produto = new Produto();
-
+   
     //instância do objeto Categoria : realizar o link entre o objeto produto e o categoria
     $categoria = new Categoria();
-    $categoria->id = $_POST['categoria_id'];
+    $categoria->setId($_POST['categoria_id']);
 
     //variaveis
-    $produto->id = $_POST["id"];
-    $produto->nome = $_POST["nome"];
-    $produto->preco = $_POST["preco"];
-    $produto->descricao = $_POST['descricao'];
-    $produto->categoria = $categoria;
-
+    $nome = $_POST["nome"];
+    $preco = $_POST["preco"];
+    $descricao = $_POST['descricao'];
+    
+    
     if(array_key_exists('usado',$_POST)){
-        $produto->usado = "true";
+        $usado = "true";
     }else{
-        $produto->usado = "false";
+        $usado = "false";
     }
     //variaveis
 
+    //Instância do Objeto produto
+    $produto = new Produto($nome,$preco,$descricao,$categoria,$usado);
+
     if(alteraProduto($conexao,$produto)){ //mysqli é o novo pacote de gerência de DB dentro do php?>
 
-    <p class="text-success">Produto <?php echo $produto->nome; ?> com preço igual à <?php echo $produto->preco;?> foi alterado com sucessso! </p>
+    <p class="text-success">Produto <?php echo $produto->getNome(); ?> com preço igual à <?php echo $produto->getPreco();?> foi alterado com sucessso! </p>
     
     <?php 
     }else{
         $msg = mysqli_error($conexao);    
     ?>
-    <p class="alert-danger">O produto <?= $produto->nome?> não foi modificado <? $msg ?></p> 
+    <p class="alert-danger">O produto <?= $produto->getNome()?> não foi modificado <? $msg ?></p> 
 
     <?php 
     }
