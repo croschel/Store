@@ -1,5 +1,5 @@
 <?php require_once("cabecalho.php");
-      require_once("banco-produto.php");
+      require_once("class/ProdutoDao.php");
       require_once("class/Produto.php");
       require_once("class/Categoria.php");
 
@@ -25,7 +25,10 @@
     $produto = new Produto($nome,$preco,$descricao,$categoria,$usado);
     $produto->setId($_POST['id']);//sem o id este não pode ser modificado
 
-    if(alteraProduto($conexao,$produto)){ //mysqli é o novo pacote de gerência de DB dentro do php?>
+    //Instância do objeto Dao do Produto
+    $produtoDao = new ProdutoDao($conexao);
+
+    if($produtoDao->alteraProduto($produto)){ //mysqli é o novo pacote de gerência de DB dentro do php?>
 
     <p class="text-success">Produto <?php echo $produto->getNome(); ?> com preço igual à <?php echo $produto->getPreco();?> foi alterado com sucessso! </p>
     

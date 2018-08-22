@@ -1,5 +1,5 @@
 <?php require_once("cabecalho.php");
-      require_once("banco-produto.php");
+      require_once("class/ProdutoDao.php");
       require_once("class/Produto.php");
       require_once("class/Categoria.php");
 
@@ -23,8 +23,11 @@
     
     //Instância do Objeto produto
     $produto = new Produto($nome,$preco,$descricao,$categoria,$usado);
+    
+    //Instancia do Objeto Dao do produto
+    $produtoDao = new ProdutoDao($conexao);
 
-    if(insereProduto($conexao,$produto)){ //mysqli é o novo pacote de gerência de DB dentro do php?>
+    if($produtoDao->insereProduto($produto)){ //mysqli é o novo pacote de gerência de DB dentro do php?>
 
     <p class="text-success">Produto <?php echo $produto->getNome(); ?> com preço igual à <?php echo $produto->getPreco();?> foi adicionado com sucessso! </p>
     

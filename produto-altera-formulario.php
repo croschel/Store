@@ -1,12 +1,18 @@
 <?php   require_once("cabecalho.php");
-        require_once("banco-categoria.php");
-        require_once("banco-produto.php");
+        require_once("class/ProdutoDao.php");
+        require_once("class/CategoriaDao.php");
         require_once("class/Categoria.php");
         require_once("class/Produto.php");
         
+        //Instancia do Objeto Dao da Categoria
+        $categoriaDao = new CategoriaDao($conexao);
+
+         //Instancia do Objeto Dao do produto
+        $produtoDao = new ProdutoDao($conexao);
+
         $id = $_GET['id'];
-        $produto = buscaProduto($conexao,$id);
-        $categorias = listarCategorias($conexao);
+        $produto = $produtoDao->buscaProduto($id);
+        $categorias = $categoriaDao->listarCategorias();
         $usado = $produto->isUsado() ? "checked='checked'" : "";
         ?>
     

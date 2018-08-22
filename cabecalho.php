@@ -1,4 +1,5 @@
-<?php require_once("mostra-alerta.php");
+<?php 
+    require_once("mostra-alerta.php");
     require_once("conecta.php");
 
     function carregaClasse($nomeDaclasse){

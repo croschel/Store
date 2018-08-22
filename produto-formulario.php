@@ -1,11 +1,14 @@
 <?php   require_once("cabecalho.php");
         require_once("class/Produto.php");
         require_once("class/Categoria.php");
-        require_once("banco-categoria.php");
+        require_once("class/CategoriaDao.php");
         require_once("logica-usuario.php");
 
+        //Instancia do Objeto Dao da Categoria
+        $categoriaDao = new CategoriaDao($conexao);
+
         verificarUsuario();
-        $categorias = listarCategorias($conexao);
+        $categorias = $categoriaDao->listarCategorias();
     
     ?>
     

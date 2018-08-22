@@ -1,5 +1,5 @@
 <?php   require_once("cabecalho.php");
-        require_once("banco-produto.php");
+        require_once("class/ProdutoDao.php");
         require_once("logica-usuario.php");
         require_once("class/Produto.php");
         require_once("class/Categoria.php");
@@ -18,8 +18,10 @@
             </tr>
         </thead>
         <?php
-
-        $produtos = listaProdutos($conexao);
+        //Instancia do Objeto Dao do produto
+        $produtoDao = new ProdutoDao($conexao);
+        
+        $produtos = $produtoDao->listaProdutos();
         foreach($produtos as $produto):?>
         <tbody>
             <tr>
@@ -45,4 +47,4 @@
         endforeach;
         ?>
     </table>
-<?php   include("rodape.php");?>
+<?php  require_once("rodape.php");?>
