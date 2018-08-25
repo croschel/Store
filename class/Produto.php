@@ -52,6 +52,12 @@
                 return $this->descricao;
         }
 
+        public function setCategoria($categoria)
+        {
+                $this->categoria = $categoria;
+
+                return $this;
+        }
         
         public function getCategoria()
         {
@@ -83,19 +89,13 @@
         function __toString(){
                 return $this->nome.": R$ ".$this->preco;
         }
+
+        public function temIsbn(){
+                return $this instanceof Livro;
+        }
+
         //end Functions
 
-        /**
-         * Set the value of categoria
-         *
-         * @return  self
-         */ 
-        public function setCategoria($categoria)
-        {
-                $this->categoria = $categoria;
-
-                return $this;
-        }
     }
 
     ?>

@@ -9,21 +9,30 @@
     $categoria = new Categoria();
     $categoria->setId($_POST['categoria_id']);
 
-    //variaveis
+    //variables
     $nome = $_POST["nome"];
     $preco = $_POST["preco"];
     $descricao = $_POST['descricao'];
+    $isbn = $_POST['isbn'];
+    $tipoProduto = $_POST['tipoProduto'];
     
     if(array_key_exists('usado',$_POST)){
         $usado = "true";
     }else{
         $usado = "false";
     }
-    //variaveis
 
-    //Instância do Objeto produto
-    $produto = new Produto($nome,$preco,$descricao,$categoria,$usado);
+    if($tipoProduto == "Livro"){
+        $produto = new Livro($nome,$preco,$descricao,$categoria,$usado);
+        $produto->setIsbn($isbn);
+    }else{
+        //Instância do Objeto produto
+        $produto = new Produto($nome,$preco,$descricao,$categoria,$usado);
+        
+    }
+
     $produto->setId($_POST['id']);//sem o id este não pode ser modificado
+    //end of variables
 
     //Instância do objeto Dao do Produto
     $produtoDao = new ProdutoDao($conexao);

@@ -4,7 +4,6 @@
       require_once("class/Categoria.php");
 
 
-
     //instância do objeto Categoria : realizar o link entre o objeto produto e o categoria
     $categoria = new Categoria();
     $categoria->setId($_POST['categoria_id']);
@@ -13,16 +12,22 @@
     $nome = $_POST["nome"];
     $preco = $_POST["preco"];
     $descricao = $_POST['descricao'];
-    
+    $isbn = $_POST['isbn'];
+    $tipoProduto = $_POST['tipoProduto'];
     if(array_key_exists('usado',$_POST)){
         $usado = "true";
     }else{
         $usado = "false";
     }
+
+    if($tipoProduto == "Livro"){
+        $produto = new Livro($nome,$preco,$descricao,$categoria,$usado);
+        $produto->setIsbn($isbn);
+    }else{
+        //Instância do Objeto produto
+        $produto = new Produto($nome,$preco,$descricao,$categoria,$usado);
+    }
     //variaveis
-    
-    //Instância do Objeto produto
-    $produto = new Produto($nome,$preco,$descricao,$categoria,$usado);
     
     //Instancia do Objeto Dao do produto
     $produtoDao = new ProdutoDao($conexao);
