@@ -33,6 +33,7 @@
                 $produto = new Produto($nome,$preco,$descricao,$categoria,$usado);
             }
 
+            
             $produto->setId($produto_array['id']);
 
             array_push($produtos,$produto);
