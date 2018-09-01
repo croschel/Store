@@ -12,7 +12,7 @@
             <tr>
             <th>Nome</th>
             <th>Preco</th>
-            <th>Preco Desc</th>
+            <th>Imposto</th>
             <th>Descrição</th>
             <th>Categoria</th>
             <th>ISBN</th>
@@ -28,7 +28,7 @@
             <tr>
                 <td><?= $produto->getNome()?></td>
                 <td><?= $produto->getPreco()?></td>
-                <td><?= $produto->precoComDesconto(0.2)?></td>
+                <td><?= $produto->calculaImposto()?></td>
                 <td><?= substr($produto->getDescricao(),0,40)?></td>
                 <td><?= $produto->getCategoria()->getNome()?></td>
                 <td><?php if($produto->temIsbn()){
